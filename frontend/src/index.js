@@ -51,23 +51,26 @@ function App() {
       </ResponsiveContainer>
       <h2 style={{margin: '32px 0 16px'}}>Sales by Country</h2>
       <table style={{width: '100%', borderCollapse: 'collapse', background: '#f6f8fa', borderRadius: 8}}>
-        <thead>
-          <tr style={{background: '#e3e8ee'}}>
-            <th style={{padding: 8, textAlign: 'left'}}>Country</th>
-            <th style={{padding: 8, textAlign: 'right'}}>Sales ($)</th>
+  <thead>
+    <tr style={{background: '#e3e8ee'}}>
+      <th style={{padding: 8, textAlign: 'left'}}>Country</th>
+      <th style={{padding: 8, textAlign: 'right'}}>Sales ($)</th>
+      <th style={{padding: 8, textAlign: 'right'}}># of Transactions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {stats.salesByCountry.map(row => (
+      <tr key={row.countryName}>
+        <td style={{padding: 8}}>{row.countryName}</td>
+        <td style={{padding: 8, textAlign: 'right'}}>{row.sales.toLocaleString()}</td>
+        <td style={{padding: 8, textAlign: 'right'}}>
+          {row.numberOfTransactions?.toLocaleString() || 0}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-          </tr>
-        </thead>
-        <tbody>
-          {stats.salesByCountry.map(row => (
-            <tr key={row.country}>
-              <td style={{padding: 8}}>{row.country}</td>
-              <td style={{padding: 8, textAlign: 'right'}}>{row.sales.toLocaleString()}</td>
-
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
