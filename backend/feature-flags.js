@@ -1,5 +1,5 @@
 const isVisitorsKpiEnabled = () => {
-    return false;
+    return true;
 };
 
 
