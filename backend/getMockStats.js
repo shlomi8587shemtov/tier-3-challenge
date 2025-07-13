@@ -37,7 +37,12 @@ function getMockStats() {
   const payload = {
     completedTransactions,
     avgOrderValue,
-    salesByCountry: salesByCountry.map(c => ({ ...c, sales: Math.round(c.sales) }))
+    salesByCountry: salesByCountry.map(c => ({
+ countryName: c.countryName,
+ sales: Math.round(c.sales),
+ numberOfTransactions: c.numberOfTransactions || 0
+}))
+
   };
 
     if (isVisitorsKpiEnabled()) {
